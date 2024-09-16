@@ -1,0 +1,52 @@
+{
+  "1": {
+    "question": "Who is the current President of the Philippines (as of 2024)?",
+    "answer_options": [
+      "Rodrigo Duterte",
+      "Ferdinand Marcos Jr.",
+      "Leni Robredo",
+      "Sara Duterte"
+    ],
+    "answer": "Ferdinand Marcos Jr."
+  },
+  "2": {
+    "question": "What are the three branches of government in the Philippines?",
+    "answer_options": [
+      "Executive, Legislative, Judicial",
+      "Executive, Legislative, Military",
+      "Legislative, Judicial, Police",
+      "Executive, Legislative, Cabinet"
+    ],
+    "answer": "Executive, Legislative, Judicial"
+  },
+  "3": {
+    "question": "What is the role of the Vice President in the Philippines?",
+    "answer_options": [
+      "Commander-in-Chief of the Armed Forces",
+      "Head of the Judicial Branch",
+      "Second-in-command to the President",
+      "Head of the Legislative Branch"
+    ],
+    "answer": "Second-in-command to the President"
+  },
+  "4": {
+    "question": "Which body is responsible for making national laws in the Philippines?",
+    "answer_options": [
+      "Supreme Court",
+      "Cabinet",
+      "Senate",
+      "House of Representatives"
+    ],
+    "answer": "Senate"
+  },
+  "5": {
+    "question": "What is a key focus of current Philippine domestic policy?",
+    "answer_options": [
+      "Space exploration",
+      "Pandemic recovery and infrastructure",
+      "Nuclear energy development",
+      "Regional independence movements"
+    ],
+    "answer": "Pandemic recovery and infrastructure"
+  }
+}
