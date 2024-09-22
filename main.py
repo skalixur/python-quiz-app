@@ -1,4 +1,4 @@
-# quiz app                                                                                                                                                                                                                                                                                                                      (regrettably the original comment here has had to be removed)
+# quiz app                                                                                                                                                                                                                                                                                                                    (regrettably the original comment here has had to be removed)
 
 import tkinter as tk
 import os
@@ -20,7 +20,7 @@ class App:
         self.current_question_index = 0
         
         # bit misleading name; the guess_stack is a stack that contains whether the user got the questions right or wrong
-        # so if the user got the 1st righht 2nd wrong and the 3rd also wrong it would look like this:
+        # so if the user got the 1st right 2nd wrong and the 3rd also wrong it would look like this:
         # [True, False, False]
         self.guess_stack = []
         self.root = tk.Tk() # make the window
@@ -35,7 +35,7 @@ class App:
         self.root.columnconfigure(2, weight=1)
         
         # Pre game
-        self.pre_game_frame = tk.Frame(self.root) # frames make your life a bit easier
+        self.pre_game_frame = tk.Frame(self.root) # frames make your life a bit easier (its like a div)
         self.welcome_label = tk.Label(self.pre_game_frame, font=self.default_font, text="Welcome to the quiz!")
         self.start_button = tk.Button(self.pre_game_frame, font=self.default_font, text="Start", command=self.start)
         
@@ -55,7 +55,7 @@ class App:
         
         self.question_title_label.grid(row=0, column=1)
         self.question_answer_options_frame.grid(row=1, column=1)
-        self.previous_question_button.grid(row=0, column=0)
+        #self.previous_question_button.grid(row=0, column=0)
         self.next_question_button.grid(row=0, column=2)
         self.progress_frame.grid(row=2, column=1)
         self.question_num_display_label.grid(row=0, column=0)
@@ -99,6 +99,7 @@ class App:
         self.question_num_display_label.config(text=f"Question {self.current_question_index + 1}/{self.max_score}")
         self.score_display_label.config(text=f"Score: {self.score}/{self.max_score}")
         
+
         # delete any previous answer options
         self.question_answer_options_frame.destroy()
         self.question_answer_options_frame = tk.Frame(self.quiz_frame) 
@@ -120,7 +121,6 @@ class App:
         col = 0
         row = 0
         for answer_option in question_answer_options:
-            # 9090
             button = tk.Button(self.question_answer_options_frame, justify="left", wraplength=self.question_button_wraplength, font=self.default_font, width=self.question_button_width, height=self.question_button_height, padx=5, pady=5, text=answer_option, command=lambda answer=answer_option, current_question=current_question: self.click_answer(answer, current_question)) # you'll just have to memorise that when using a tk.Button this is how you call a function that requires variables otherwise if you don't do the variable=variable between the lambda and the ':' when you click any button it will use the variable of the last iteration because of reasons
             button.grid(row=row, column=col, padx=10, pady=10) # if you use padx and pady when grid-ing a widget it's like giving it a margin, if you give it when you CREATE a widget it's actual padding
             col += 1
@@ -156,7 +156,8 @@ class App:
             if last_question_guess: # if the user guessed correctly on the previous question, we need to subtract the score
                 self.score -= 1
             self.display_question()
-            
+    
+
 class QuestionDecoder:
     def __init__(self) -> None:
         self.questions = []
@@ -171,7 +172,7 @@ class QuestionDecoder:
         for count, question in enumerate(questions_json.values()):
             self.questions.append(Question(question["question"], question["answer"], question["answer_options"], count))
             if question["answer"] not in question["answer_options"]:
-                print("Warning: The answer is not in the answer options in question", count)
+                print("Warning: The answer is not in the answer options in question", count + 1)
         
         return self.questions
     
@@ -182,8 +183,8 @@ class Question:
         self.answer_options:list[str] = answer_options # you can type hint a variable so later autocorrect can help you and stuff (oh that's great)
         self.question_num = question_num
     
-    def check_answer(self, answer: str) -> bool:
-        return answer == self.answer
+    def check_answer(self, user_answer: str) -> bool:
+        return user_answer == self.answer
 
 if __name__ == "__main__":
     # Set the working directory to the directory of the script
